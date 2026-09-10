@@ -6,7 +6,7 @@
 
 ---
 
-## 🌟 대표 프로젝트: [S2Util](https://github.com/devers2/s2-util) & [s2-validator](https://github.com/devers2/s2-util/tree/main/s2-validator)
+## 🌟 대표 프로젝트: [s2-util](https://github.com/devers2/s2-util) & [s2-validator](https://github.com/devers2/s2-util/tree/main/s2-validator)
 
 [![Maven Central](https://img.shields.io/maven-central/v/io.github.devers2/s2-validator?color=brightgreen&label=Maven%20Central)](https://central.sonatype.com/artifact/io.github.devers2/s2-validator)
 [![Java 17+](https://img.shields.io/badge/Java-17%2B-blue?logo=openjdk)](https://openjdk.org/)
@@ -15,17 +15,17 @@
 > **"백엔드 DTO에도 정규식 쓰고, 프론트엔드 JS에도 똑같은 검증 코드를 또 짜고 계신가요?"**
 > **"비밀번호 확인이나 조건부 필수값 때문에 복잡한 어노테이션을 만드느라 지치셨나요?"**
 >
-> **S2Validator**는 **"한 번 작성하고, 어디서든 검증한다(Write Once, Validate Anywhere)"**는 철학으로 만들어진 차세대 동적 검증 프레임워크입니다. Java에서 단 한 번 정의하면 서버 검증은 물론, **프론트엔드 JavaScript 코드 0줄로 브라우저 네이티브 툴팁 검증까지 완벽하게 자동 동기화**됩니다.
+> **s2-validator**는 **"한 번 작성하고, 어디서든 검증한다(Write Once, Validate Anywhere)"**는 철학으로 만들어진 차세대 동적 검증 프레임워크입니다. Java에서 단 한 번 정의하면 서버 검증은 물론, **프론트엔드 JavaScript 코드 0줄로 브라우저 네이티브 툴팁 검증까지 완벽하게 자동 동기화**됩니다.
 
-### 💡 표준 Bean Validation 대비 차별점 (Why S2Validator?)
+### 💡 표준 Bean Validation 대비 차별점 (Why s2-validator?)
 
-| 실무 개발의 고질적인 통곡의 벽 | 표준 Bean Validation (JSR-380) | ⭐ S2Validator |
+| 실무 개발의 고질적인 통곡의 벽 | 표준 Bean Validation (JSR-380) | ⭐ s2-validator |
 | :--- | :--- | :--- |
 | **동적 조건부 검증**<br>*(카드 결제일 때만 카드번호 필수)* | 커스텀 어노테이션 작성 또는 악명 높은 `@GroupSequenceProvider` 필요 (코드 급증) ❌ | 직관적인 체이닝 단 2줄로 해결:<br>`.when("payMethod", "CARD").rule(REQUIRED)` ✅ |
 | **크로스 필드 비교**<br>*(비밀번호 일치, 기간 전후 관계)* | 클래스 레벨 어노테이션 작성 필요; 루트(Global) 에러로 박혀 필드별 표시 곤란 ❌ | 해당 필드에 에러가 정확히 바인딩됨:<br>`.rule(EQUALS_FIELD, "password")` ✅ |
 | **클라이언트(브라우저) 연동** | 서버 전용. 프론트엔드에서 JS/TS(Zod 등)로 **동일 규칙 중복 코딩** 필수 ❌ | **프론트엔드 코드 0줄**: `getRulesJson()` 전달 시 브라우저 네이티브 툴팁/포커스 자동 처리 ✅ |
 | **자연스러운 한국어 조사** 🇰🇷 | 기본 미지원. 받침 유무에 따른 커스텀 `MessageInterpolator` 직접 구현 ❌ | `{0\|은/는}`, `{0\|이/가}` 등 **받침에 따른 조사 자동 보정 기본 내장** ✅ |
-| **필드 오타 / 리팩토링 안전성** | 문자열 기반 바인딩 실수 시 런타임에 에러 발생 위험 ❌ | 동반 플러그인(`s2-validator-plugin`)이 **컴파일 시점 AST 정적 분석으로 빌드 사전 차단** 🛡️ ✅ |
+| **필드 오타 / 리팩토링 안전성** | 문자열 기반 바인딩 실수 시 런타임에 에러 발생 위험 ❌ | **`s2-validator-plugin`**이 **컴파일 시점 AST 정적 분석으로 빌드 사전 차단** 🛡️ ✅ |
 
 ### 🚀 30초 코드 맛보기
 
@@ -63,7 +63,7 @@ model.addAttribute("rules", S2BindValidator.context("signUp", this::signUpRules)
 ```
 
 🔗 **단계별로 더 깊이 살펴보기:**
-- 🏛️ **[S2Util 통합 저장소 방문하기 →](https://github.com/devers2/s2-util)**: 전체 유틸리티 제품군(`s2-core`, `s2-validator`, `s2-jpa`) 개요 및 통합 시작 가이드
+- 🏛️ **[s2-util 통합 저장소 방문하기 →](https://github.com/devers2/s2-util)**: 전체 유틸리티 제품군(`s2-core`, `s2-validator`, `s2-jpa`) 개요 및 통합 시작 가이드
 - 📖 **[s2-validator 상세 가이드 보기 →](https://github.com/devers2/s2-util/tree/main/s2-validator)**: 30여 종 전체 규칙 목록, Spring MVC 연동, Thymeleaf/HTML 프론트엔드 연동 튜토리얼
 
 ---
@@ -72,12 +72,12 @@ model.addAttribute("rules", S2BindValidator.context("signUp", this::signUpRules)
 
 | 프로젝트 / 모듈 | 설명 | 저장소 |
 | :--- | :--- | :---: |
-| **[`s2-validator`](https://github.com/devers2/s2-util/tree/main/s2-validator)** | ⭐ 서버·클라이언트 통합 유효성 검증 엔진 & Spring 바인딩 통합 | [s2-util](https://github.com/devers2/s2-util) |
-| **[`s2-validator-plugin`](https://github.com/devers2/s2-util/tree/main/s2-validator-plugin)** | Gradle 정적 분석 플러그인 — DTO 필드 오타를 컴파일 타임에 감지 | [s2-util](https://github.com/devers2/s2-util) |
-| **[`s2-core`](https://github.com/devers2/s2-util/tree/main/s2-core)** | 고성능 Java 유틸리티 툴킷 (MethodHandle 리플렉션, W-TinyLFU 캐시, 날짜, 문자열) | [s2-util](https://github.com/devers2/s2-util) |
-| **[`s2-jpa`](https://github.com/devers2/s2-util/tree/main/s2-jpa)** | SQL 인젝션 방어형 플루언트 동적 JPQL 쿼리 빌더 | [s2-util](https://github.com/devers2/s2-util) |
-| **[`s2-support`](https://github.com/devers2/s2-support)** | 실무 애플리케이션 보조 라이브러리 (페이징, 파일/SFTP 관리, Spring 컨텍스트 유틸) | [s2-support](https://github.com/devers2/s2-support) |
-| **[`s2-build-support`](https://github.com/devers2/s2-build-support)** | 라이선스·저작권·배포 자동화를 위한 Gradle 컨벤션 플러그인 | [s2-build-support](https://github.com/devers2/s2-build-support) |
+| **[`s2-validator`](https://github.com/devers2/s2-util/tree/main/s2-validator)** | ⭐ 서버·클라이언트 통합 유효성 검증 엔진 & Spring 바인딩 통합 | [`s2-util`](https://github.com/devers2/s2-util) |
+| **[`s2-validator-plugin`](https://github.com/devers2/s2-util/tree/main/s2-validator-plugin)** | Gradle 정적 분석 플러그인 — DTO 필드 오타 및 체이닝 누락(죽은 코드) 감지 | [`s2-util`](https://github.com/devers2/s2-util) |
+| **[`s2-core`](https://github.com/devers2/s2-util/tree/main/s2-core)** | 고성능 Java 유틸리티 툴킷 (MethodHandle 리플렉션, W-TinyLFU 캐시, 날짜, 문자열) | [`s2-util`](https://github.com/devers2/s2-util) |
+| **[`s2-jpa`](https://github.com/devers2/s2-util/tree/main/s2-jpa)** | SQL 인젝션 방어형 플루언트 동적 JPQL 쿼리 빌더 | [`s2-util`](https://github.com/devers2/s2-util) |
+| **[`s2-support`](https://github.com/devers2/s2-support)** | 실무 애플리케이션 보조 라이브러리 (페이징, 파일/SFTP 관리, Spring 컨텍스트 유틸) | [`s2-support`](https://github.com/devers2/s2-support) |
+| **[`s2-build-support`](https://github.com/devers2/s2-build-support)** | 라이선스·저작권·배포 자동화를 위한 Gradle 컨벤션 플러그인 | [`s2-build-support`](https://github.com/devers2/s2-build-support) |
 
 ---
 
