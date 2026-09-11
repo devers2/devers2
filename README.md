@@ -17,17 +17,18 @@ Full-Stack Software Engineer & Open-Source Creator. Passionate about high-perfor
 
 ### 💡 Why s2-validator over Standard Bean Validation?
 
-| Pain Points in Real-World Enterprise | Standard Bean Validation (JSR-380) | ⭐ s2-validator |
-| :--- | :--- | :--- |
-| **Conditional Fields** *(If A then B required)* | Verbose `@GroupSequenceProvider` or custom annotation classes ❌ | Expressive in 2 lines: `.when("type", "VIP").rule(REQUIRED)` ✅ |
-| **Cross-Field Comparison** *(pw == confirmPw)* | Class-level annotations; errors bound to root object ❌ | Directly bound to the target field: `.rule(EQUALS_FIELD, "pw")` ✅ |
-| **Browser / Frontend Sync** | Server-only. Must duplicate identical regex/rules in JS/TS ❌ | **Zero frontend code**: `getRulesJson()` + native tooltip auto-focus ✅ |
-| **Korean Particle Grammar** 🇰🇷 | Complex custom `MessageInterpolator` required ❌ | Built-in smart postpositions (`{0\|은/는}`, `{0\|이/가}`) ✅ |
-| **Field Typo / Refactoring Safety** | String-based property paths fail silently at runtime ❌ | **`s2-validator-plugin`** catches typos at compile time via AST static analysis 🛡️ ✅ |
+| Pain Points in Real-World Enterprise            | Standard Bean Validation (JSR-380)                               | ⭐ s2-validator                                                                       |
+| :---------------------------------------------- | :--------------------------------------------------------------- | :------------------------------------------------------------------------------------ |
+| **Conditional Fields** _(If A then B required)_ | Verbose `@GroupSequenceProvider` or custom annotation classes ❌ | Expressive in 2 lines: `.when("type", "VIP").rule(REQUIRED)` ✅                       |
+| **Cross-Field Comparison** _(pw == confirmPw)_  | Class-level annotations; errors bound to root object ❌          | Directly bound to the target field: `.rule(EQUALS_FIELD, "pw")` ✅                    |
+| **Browser / Frontend Sync**                     | Server-only. Must duplicate identical regex/rules in JS/TS ❌    | **Zero frontend code**: `getRulesJson()` + native tooltip auto-focus ✅               |
+| **Korean Particle Grammar** 🇰🇷                  | Complex custom `MessageInterpolator` required ❌                 | Built-in smart postpositions (`{0\|은/는}`, `{0\|이/가}`) ✅                          |
+| **Field Typo / Refactoring Safety**             | String-based property paths fail silently at runtime ❌          | **`s2-validator-plugin`** catches typos at compile time via AST static analysis 🛡️ ✅ |
 
 ### 🚀 30-Second Taste
 
 #### 1. Instant Backend Validation (No frontend sync needed)
+
 Validate DTOs, VOs, or Maps in a single fluent line. Omitted rules default to `REQUIRED`:
 
 ```java
@@ -47,6 +48,7 @@ boolean isValid = S2Validator.of(command)
 ```
 
 #### 2. Full-Stack Auto-Sync (0 Lines of Frontend JS)
+
 Need browser-side validation? Send the server rules directly to HTML:
 
 ```java
@@ -57,10 +59,11 @@ model.addAttribute("rules", S2BindValidator.context("signUp", this::signUpRules)
 
 ```html
 <!-- Client: Native browser tooltips & auto-focus with a single HTML attribute! -->
-<form th:data-s2-rules="${rules}">
+<form th:data-s2-rules="${rules}"></form>
 ```
 
 🔗 **Dive Deeper into the Ecosystem:**
+
 - 🏛️ **[s2-util Suite Repository →](https://github.com/devers2/s2-util)**: Explore the complete utility toolkit (`s2-core`, `s2-validator`, `s2-jpa`) and quick start guide
 - 📖 **[s2-validator Deep Dive & Guide →](https://github.com/devers2/s2-util/tree/main/s2-validator)**: Complete rule reference, Spring MVC binding, and Thymeleaf/HTML integration
 
@@ -68,14 +71,14 @@ model.addAttribute("rules", S2BindValidator.context("signUp", this::signUpRules)
 
 ## 📦 S2 Project Suite
 
-| Project / Module | Description | Repository |
-| :--- | :--- | :---: |
-| **[`s2-validator`](https://github.com/devers2/s2-util/tree/main/s2-validator)** | ⭐ Unified dynamic cross-platform validation engine & Spring binding integration | [`s2-util`](https://github.com/devers2/s2-util) |
-| **[`s2-validator-plugin`](https://github.com/devers2/s2-util/tree/main/s2-validator-plugin)** | Gradle static analysis plugin — catches DTO field typos and incomplete chains at compile time | [`s2-util`](https://github.com/devers2/s2-util) |
-| **[`s2-core`](https://github.com/devers2/s2-util/tree/main/s2-core)** | High-performance Java utility toolkit (MethodHandle Reflection, W-TinyLFU Cache, Dates, Strings) | [`s2-util`](https://github.com/devers2/s2-util) |
-| **[`s2-jpa`](https://github.com/devers2/s2-util/tree/main/s2-jpa)** | Fluent dynamic JPQL query builder with SQL injection prevention | [`s2-util`](https://github.com/devers2/s2-util) |
-| **[`s2-support`](https://github.com/devers2/s2-support)** | Opinionated companion library for application-level workflows (Pagination, SFTP/Files, Spring Context) | [`s2-support`](https://github.com/devers2/s2-support) |
-| **[`s2-build-support`](https://github.com/devers2/s2-build-support)** | Convention Gradle plugin for automated licensing, copyright, and publication | [`s2-build-support`](https://github.com/devers2/s2-build-support) |
+| Project / Module                                                                              | Description                                                                                            |                            Repository                             |
+| :-------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------: |
+| **[`s2-validator`](https://github.com/devers2/s2-util/tree/main/s2-validator)**               | ⭐ Unified dynamic cross-platform validation engine & Spring binding integration                       |          [`s2-util`](https://github.com/devers2/s2-util)          |
+| **[`s2-validator-plugin`](https://github.com/devers2/s2-util/tree/main/s2-validator-plugin)** | Gradle static analysis plugin — catches DTO field typos and incomplete chains at compile time          |          [`s2-util`](https://github.com/devers2/s2-util)          |
+| **[`s2-core`](https://github.com/devers2/s2-util/tree/main/s2-core)**                         | High-performance Java utility toolkit (MethodHandle Reflection, W-TinyLFU Cache, Dates, Strings)       |          [`s2-util`](https://github.com/devers2/s2-util)          |
+| **[`s2-jpa`](https://github.com/devers2/s2-util/tree/main/s2-jpa)**                           | Fluent dynamic JPQL query builder with SQL injection prevention                                        |          [`s2-util`](https://github.com/devers2/s2-util)          |
+| **[`s2-support`](https://github.com/devers2/s2-support)**                                     | Opinionated companion library for application-level workflows (Pagination, SFTP/Files, Spring Context) |       [`s2-support`](https://github.com/devers2/s2-support)       |
+| **[`s2-build-support`](https://github.com/devers2/s2-build-support)**                         | Convention Gradle plugin for automated licensing, copyright, and publication                           | [`s2-build-support`](https://github.com/devers2/s2-build-support) |
 
 ---
 
